@@ -1,16 +1,19 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export function SiteMotion() {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) return
 
     gsap.registerPlugin(ScrollTrigger)
 
     const motion = gsap.context(() => {
+      const heroSection = document.querySelector('#home')
+      const heroLines = gsap.utils.toArray('[data-hero-line]')
       const heroCopy = gsap.utils.toArray('[data-hero-copy]')
+      const heroStats = gsap.utils.toArray('[data-hero-stat]')
       const revealElements = gsap.utils.toArray('[data-reveal]')
       const motionElements = gsap.utils.toArray('main > section:not(#home), footer')
       const heroMedia = document.querySelector('[data-hero-media]')
@@ -18,22 +21,71 @@ export function SiteMotion() {
       const donationWords = gsap.utils.toArray('[data-donation-word]')
       const hasSectionHash = window.location.hash.length > 1
 
-      if (heroCopy.length) {
-        gsap.from(
-          heroCopy,
+      if (heroLines.length) {
+        gsap.fromTo(
+          heroLines,
+          { yPercent: 118, rotate: 2.5, autoAlpha: 0 },
           {
+            yPercent: 0,
+            rotate: 0,
+            autoAlpha: 1,
+            duration: 1.1,
+            stagger: 0.11,
+            delay: 0.15,
+            ease: 'power4.out',
+            clearProps: 'transform,opacity,visibility',
+          },
+        )
+      }
+
+      if (heroCopy.length) {
+        gsap.fromTo(
+          heroCopy,
+          { autoAlpha: 0, y: 22 },
+          {
+            autoAlpha: 1,
             y: 0,
-            duration: 0.85,
+            duration: 0.8,
             stagger: 0.12,
+            delay: 0.45,
             ease: 'power3.out',
-            delay: 0.12,
-            clearProps: 'transform',
+            clearProps: 'transform,opacity,visibility',
+          },
+        )
+      }
+
+      if (heroStats.length) {
+        gsap.fromTo(
+          heroStats,
+          { autoAlpha: 0, y: 26 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.1,
+            delay: 0.85,
+            ease: 'power3.out',
+            clearProps: 'transform,opacity,visibility',
           },
         )
       }
 
       if (heroMedia) {
-        gsap.fromTo(heroMedia, { scale: 1.08 }, { scale: 1, duration: 2.2, ease: 'power2.out' })
+        gsap.fromTo(heroMedia, { scale: 1.14 }, { scale: 1, duration: 2.2, ease: 'power2.out' })
+      }
+
+      if (heroSection) {
+        gsap.to('.hero-copy', {
+          yPercent: -8,
+          autoAlpha: 0.15,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroSection,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 0.5,
+          },
+        })
       }
 
       if (donationWords.length) {
@@ -113,7 +165,7 @@ export function SiteMotion() {
       const parallaxImage = document.querySelector('[data-parallax]')
       if (parallaxImage) {
         gsap.to(parallaxImage, {
-          yPercent: -4,
+          yPercent: -6,
           ease: 'none',
           scrollTrigger: {
             trigger: parallaxImage,

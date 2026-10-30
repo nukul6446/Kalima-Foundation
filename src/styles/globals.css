@@ -44,7 +44,13 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 1.5rem;
+  scroll-padding-top: 5.5rem;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 6rem;
+  }
 }
 
 body {
@@ -71,6 +77,27 @@ body {
 .hero-badge {
   width: clamp(130px, 14vw, 190px);
   pointer-events: none;
+}
+
+.hero-badge .circular-badge {
+  width: 100%;
+}
+
+.hero-cue-dot {
+  animation: hero-cue 2s ease-in-out infinite;
+}
+
+@keyframes hero-cue {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateY(-1px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(3px);
+  }
 }
 
 .donation-title {
@@ -115,9 +142,14 @@ body {
 .circular-badge__text {
   fill: currentColor;
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 700;
+    
   letter-spacing: 2.2px;
+}
+.circular-badge {
+  margin-top: -280px;
+  margin-left: -20px;
 }
 
 .circular-badge__center {
@@ -126,9 +158,10 @@ body {
   display: grid;
   place-items: center;
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.25em;
+  
 }
 
 @keyframes circular-badge-spin {

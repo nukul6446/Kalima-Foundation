@@ -16,7 +16,7 @@ export function CircularBadge({ className = '' }) {
           </textPath>
         </text>
       </svg>
-      <span className="circular-badge__center">KALIMA</span>
+      {/* <span className="circular-badge__center">KALIMA</span> */}
     </div>
   )
 }
