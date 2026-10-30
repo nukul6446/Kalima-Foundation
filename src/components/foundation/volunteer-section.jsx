@@ -1,4 +1,5 @@
 import { ArrowUpRight, HeartHandshake } from 'lucide-react'
+import { foundationAssets } from './assets'
 
 const waysToHelp = [
   'Medical and healthcare assistance.',
@@ -52,6 +53,25 @@ export function VolunteerSection() {
             </ul>
             <p className="font-editorial mt-6 text-xl italic text-forest sm:text-2xl">Together, We Can Make a Difference.</p>
           </div>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-7xl px-5 sm:mt-14 sm:px-8">
+          <figure data-reveal className="relative overflow-hidden rounded-[1.75rem] bg-forest sm:rounded-[2rem]">
+            <img
+              src={foundationAssets.volunteersAid}
+              alt="Volunteers serving food and water at a community aid station"
+              className="h-[260px] w-full object-cover object-center sm:h-[360px] lg:h-[420px]"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#052e26]/92 via-[#052e26]/45 to-transparent" aria-hidden="true" />
+            <figcaption className="absolute inset-y-0 left-0 flex max-w-[520px] flex-col justify-center p-6 text-white sm:p-9 lg:p-12">
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Volunteers in action</p>
+              <p className="font-editorial mt-2 text-[clamp(1.5rem,2.8vw,2.2rem)] leading-tight">
+                Every hour given becomes hope for a family.
+              </p>
+            </figcaption>
+          </figure>
         </div>
       </section>
 

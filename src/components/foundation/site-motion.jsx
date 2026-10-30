@@ -15,7 +15,6 @@ export function SiteMotion() {
       const heroCopy = gsap.utils.toArray('[data-hero-copy]')
       const heroStats = gsap.utils.toArray('[data-hero-stat]')
       const revealElements = gsap.utils.toArray('[data-reveal]')
-      const motionElements = gsap.utils.toArray('main > section:not(#home), footer')
       const heroMedia = document.querySelector('[data-hero-media]')
       const heroGlow = document.querySelector('.hero-glow')
       const donationWords = gsap.utils.toArray('[data-donation-word]')
@@ -76,8 +75,8 @@ export function SiteMotion() {
 
       if (heroSection) {
         gsap.to('.hero-copy', {
-          yPercent: -8,
-          autoAlpha: 0.15,
+          yPercent: -12,
+          autoAlpha: 0.22,
           ease: 'none',
           scrollTrigger: {
             trigger: heroSection,
@@ -122,50 +121,28 @@ export function SiteMotion() {
       if (hasSectionHash) {
         gsap.set(revealElements, { autoAlpha: 1, y: 0 })
       } else {
-        revealElements.forEach((element) => {
-          gsap.fromTo(
-            element,
-            { autoAlpha: 0, y: 24 },
-            {
+        gsap.set(revealElements, { autoAlpha: 0, y: 28 })
+        ScrollTrigger.batch(revealElements, {
+          start: 'top 88%',
+          once: true,
+          onEnter: (elements) => {
+            gsap.to(elements, {
               autoAlpha: 1,
               y: 0,
-              duration: 0.72,
-              ease: 'power2.out',
+              duration: 0.8,
+              stagger: 0.09,
+              ease: 'power3.out',
+              overwrite: true,
               clearProps: 'transform,opacity,visibility',
-              scrollTrigger: {
-                trigger: element,
-                start: 'top 89%',
-                once: true,
-              },
-            },
-          )
+            })
+          },
         })
       }
-
-      motionElements.forEach((element, index) => {
-        gsap.fromTo(
-          element,
-          { autoAlpha: 0, y: 18 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.65,
-            delay: Math.min(index * 0.03, 0.3),
-            ease: 'power2.out',
-            clearProps: 'transform,opacity,visibility',
-            scrollTrigger: {
-              trigger: element,
-              start: 'top 94%',
-              once: true,
-            },
-          },
-        )
-      })
 
       const parallaxImage = document.querySelector('[data-parallax]')
       if (parallaxImage) {
         gsap.to(parallaxImage, {
-          yPercent: -6,
+          yPercent: -8,
           ease: 'none',
           scrollTrigger: {
             trigger: parallaxImage,
@@ -175,6 +152,23 @@ export function SiteMotion() {
           },
         })
       }
+
+      gsap.utils.toArray('section[data-reveal-group]').forEach((section) => {
+        gsap.fromTo(
+          section,
+          { backgroundPosition: '50% 0%' },
+          {
+            backgroundPosition: '50% 12%',
+            ease: 'none',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top bottom',
+              end: 'bottom top',
+              scrub: 1,
+            },
+          },
+        )
+      })
 
       ScrollTrigger.refresh()
     })

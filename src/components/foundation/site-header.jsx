@@ -114,11 +114,15 @@ export function SiteHeader() {
           className="group flex shrink-0 items-center gap-3"
           onClick={closeMenu}
         >
-          <img
-            src={foundationAssets.logo}
-            alt="Kalima Foundation logo"
-            className="size-11 rounded-full bg-white p-1.5 object-contain transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-105 sm:size-12"
-          />
+          <span className="flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.22)] ring-2 ring-white/60 transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105 sm:size-16 sm:p-2">
+            <img
+              src="/kalima-logo.png"
+              alt="Kalima Foundation emblem"
+              className="size-full object-contain"
+              width="512"
+              height="512"
+            />
+          </span>
           <span className="flex flex-col leading-tight">
             <span className="font-editorial text-[18px] font-semibold tracking-[0.03em] text-white transition-colors group-hover:text-saffron sm:text-[20px]">
               KALIMA

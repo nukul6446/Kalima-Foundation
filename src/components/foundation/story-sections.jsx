@@ -122,20 +122,41 @@ export function AboutSection() {
             </p>
           </div>
 
-          <div data-reveal className="rounded-[2rem] border border-forest/5 bg-white px-7 py-9 shadow-[0_22px_65px_rgba(22,67,52,0.08)] sm:px-10 sm:py-12">
+          <figure data-reveal className="relative overflow-hidden rounded-[2rem] bg-forest shadow-[0_28px_70px_rgba(22,67,52,0.2)]">
             <img
-              src={foundationAssets.logo}
-              alt="Kalima Foundation & Charitable Trust logo"
-              className="mx-auto h-40 w-full max-w-[270px] object-contain sm:h-48"
+              src={foundationAssets.aboutCommunity}
+              alt="Mothers and children gathered at a community programme"
+              className="h-[420px] w-full object-cover object-center sm:h-[500px] lg:h-[560px]"
               loading="lazy"
               decoding="async"
             />
-            <div className="mt-8 border-t border-forest/10 pt-7">
-              <blockquote className="font-editorial mx-auto max-w-[470px] text-center text-[clamp(1.5rem,3vw,2rem)] italic leading-tight text-forest">
+            <div className="absolute inset-0 bg-gradient-to-t from-[#052e26]/95 via-[#052e26]/30 to-[#052e26]/20" aria-hidden="true" />
+
+            <div className="absolute inset-x-0 top-0 flex items-center gap-3 p-6 sm:p-7">
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white p-1 shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
+                <img
+                  src={foundationAssets.logoMark}
+                  alt=""
+                  className="size-full object-contain"
+                  width="512"
+                  height="512"
+                  loading="lazy"
+                />
+              </span>
+              <span className="flex flex-col leading-tight text-white">
+                <span className="font-editorial text-[17px] font-semibold tracking-[0.03em]">KALIMA</span>
+                <span className="mt-0.5 text-[8px] font-medium uppercase tracking-[0.16em] text-white/70">Foundation &amp; Charitable Trust</span>
+              </span>
+            </div>
+
+            <figcaption className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Our promise</p>
+              <blockquote className="font-editorial mt-2 max-w-[440px] text-[clamp(1.5rem,2.6vw,2rem)] italic leading-tight text-white">
                 “From the People, By the People, To the People.”
               </blockquote>
-            </div>
-          </div>
+              <p className="mt-3 text-[11px] leading-5 text-white/65">Serving communities with compassion since 18 July 2023.</p>
+            </figcaption>
+          </figure>
         </div>
 
         <div data-reveal className="mt-16 sm:mt-20">
@@ -212,7 +233,24 @@ export function FocusSection() {
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-5">
+        <figure data-reveal className="relative mt-10 overflow-hidden rounded-[1.75rem] bg-forest sm:mt-12 sm:rounded-[2rem]">
+          <img
+            src={foundationAssets.healthCheckup}
+            alt="A doctor checking a patient with a stethoscope at a clinic"
+            className="h-[240px] w-full object-cover object-center sm:h-[320px] lg:h-[360px]"
+            loading="lazy"
+            decoding="async"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#052e26]/90 via-[#052e26]/25 to-transparent" aria-hidden="true" />
+          <figcaption className="absolute inset-x-0 bottom-0 max-w-[560px] p-6 sm:p-9 lg:p-10">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Care that reaches people</p>
+            <p className="font-editorial mt-2 text-[clamp(1.4rem,2.6vw,2rem)] leading-tight text-white">
+              Every check-up is a step towards a healthier community.
+            </p>
+          </figcaption>
+        </figure>
+
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:mt-6 lg:grid-cols-3 lg:gap-5">
           {focusAreas.map(({ icon: Icon, title, description }) => (
             <article
               key={title}
@@ -269,17 +307,33 @@ export function WhoWeServeSection() {
   return (
     <section className="bg-paper pb-20 sm:pb-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
-        <div data-reveal className="max-w-[800px]">
-          <p className="eyebrow">Who we serve</p>
-          <h2 className="font-editorial mt-5 text-[clamp(2.7rem,5vw,3.9rem)] leading-[1.06] tracking-[-0.04em] text-forest">
-            For those who need us the most.
-          </h2>
-          <p className="mt-5 max-w-[730px] text-sm leading-7 text-ink/65 sm:text-base sm:leading-8">
-            Our initiatives are designed to support communities and individuals who need assistance the most.
-          </p>
+        <div className="grid items-end gap-8 lg:grid-cols-[1fr_0.68fr] lg:gap-14">
+          <div data-reveal className="max-w-[800px]">
+            <p className="eyebrow">Who we serve</p>
+            <h2 className="font-editorial mt-5 text-[clamp(2.7rem,5vw,3.9rem)] leading-[1.06] tracking-[-0.04em] text-forest">
+              For those who need us the most.
+            </h2>
+            <p className="mt-5 max-w-[730px] text-sm leading-7 text-ink/65 sm:text-base sm:leading-8">
+              Our initiatives are designed to support communities and individuals who need assistance the most.
+            </p>
+          </div>
+
+          <figure data-reveal className="relative mx-auto w-full max-w-[440px] overflow-hidden rounded-[1.5rem] bg-forest shadow-[0_20px_55px_rgba(22,67,52,0.16)] sm:rounded-[1.75rem] lg:mx-0 lg:max-w-none">
+            <img
+              src={foundationAssets.ruralClassroom}
+              alt="Children learning together in a rural classroom"
+              className="h-[280px] w-full object-cover object-[center_35%] sm:h-[340px] lg:h-[320px]"
+              loading="lazy"
+              decoding="async"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#052e26]/85 via-transparent to-transparent" aria-hidden="true" />
+            <figcaption className="absolute inset-x-0 bottom-0 p-5 text-[11px] font-semibold leading-5 text-white/90 sm:p-6">
+              Education opens the door to a better future.
+            </figcaption>
+          </figure>
         </div>
 
-        <div className="mt-8 border-t border-forest/15">
+        <div className="mt-10 border-t border-forest/15">
           {communities.map(({ title, description }, index) => (
             <article key={title} data-reveal className="grid gap-2 border-b border-forest/15 py-5 sm:py-6 md:grid-cols-[96px_0.9fr_1.1fr] md:items-center md:gap-6">
               <span className="font-editorial text-[28px] leading-none text-mint">0{index + 1}</span>

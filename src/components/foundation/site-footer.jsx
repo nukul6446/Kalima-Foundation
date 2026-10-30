@@ -49,7 +49,16 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1.2fr_0.9fr_0.7fr_1fr] lg:gap-12">
         <div>
           <a href="#home" aria-label="Kalima Foundation home" className="inline-flex items-center gap-3">
-            <img src={foundationAssets.logo} alt="Kalima logo" className="size-12 rounded-full bg-white p-1.5 object-contain" loading="lazy" />
+            <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white p-1.5 ring-1 ring-white/25">
+              <img
+                src={foundationAssets.logoMark}
+                alt="Kalima Foundation emblem"
+                className="size-full object-contain"
+                width="512"
+                height="512"
+                loading="lazy"
+              />
+            </span>
             <span className="flex flex-col">
               <span className="font-editorial text-lg font-semibold tracking-[0.03em]">KALIMA</span>
               <span className="mt-1 text-[8px] font-medium uppercase tracking-[0.14em] text-white/60">Foundation &amp; Charitable Trust (R.)</span>

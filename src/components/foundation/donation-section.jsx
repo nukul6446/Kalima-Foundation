@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Check, Copy, Heart, ShieldCheck } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Check, Copy, Heart, Maximize2, QrCode, ShieldCheck, X } from 'lucide-react'
 import { foundationAssets } from './assets'
 
 const accounts = [
@@ -66,7 +66,7 @@ function CopyButton({ value, label, onCopy, copied }) {
       type="button"
       onClick={() => onCopy(value)}
       aria-label={`Copy ${label}`}
-      className="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-white/25 px-2.5 text-[10px] font-semibold text-white/85 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
+      className="inline-flex min-h-8 shrink-0 items-center gap-1.5 rounded-full border border-white/25 px-2.5 text-[10px] font-semibold text-white/85 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
     >
       {copied ? <Check aria-hidden="true" className="size-3.5" /> : <Copy aria-hidden="true" className="size-3.5" />}
       {copied ? 'Copied' : 'Copy'}
@@ -74,9 +74,22 @@ function CopyButton({ value, label, onCopy, copied }) {
   )
 }
 
+function DetailTile({ label, value, className = '', onCopy, copied }) {
+  return (
+    <div className={`rounded-xl border border-white/10 bg-white/[0.055] px-4 py-3.5 ${className}`}>
+      <dt className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/45">{label}</dt>
+      <dd className="mt-1.5 flex items-start justify-between gap-2.5">
+        <span className="min-w-0 break-all text-[13px] font-semibold leading-5 text-white/95 sm:text-sm">{value}</span>
+        <CopyButton value={value} label={label.toLowerCase()} onCopy={onCopy} copied={copied} />
+      </dd>
+    </div>
+  )
+}
+
 export function DonationSection() {
   const [copiedValue, setCopiedValue] = useState(null)
   const [copyFailed, setCopyFailed] = useState(false)
+  const [enlarged, setEnlarged] = useState(null)
 
   async function copyValue(value) {
     try {
@@ -88,6 +101,23 @@ export function DonationSection() {
       setCopyFailed(true)
     }
   }
+
+  useEffect(() => {
+    if (!enlarged) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') setEnlarged(null)
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', onKeyDown)
+    }
+  }, [enlarged])
 
   return (
     <>
@@ -154,45 +184,89 @@ export function DonationSection() {
               <h3 className="text-sm font-semibold text-saffron">Bank Transfer &amp; UPI Donations</h3>
             </div>
 
-            <div className="mt-5 grid gap-5 lg:grid-cols-2 lg:gap-7">
+            <div className="mt-5 grid gap-5 lg:gap-6">
               {accounts.map((account) => (
-                <article key={account.bank} data-reveal className="rounded-[1.5rem] border border-white/15 bg-white/[0.045] p-5 sm:p-7 lg:p-8">
-                  <div className="flex flex-wrap items-start justify-between gap-3">
-                    <h3 className="font-editorial text-[25px] leading-tight text-white sm:text-[30px] lg:text-[34px]">{account.bank}</h3>
-                    <span className="pt-1 text-[9px] font-extrabold uppercase tracking-[0.19em] text-saffron sm:text-[10px]">Trust account</span>
-                  </div>
-
-                  <div className="mt-5 grid gap-6 sm:grid-cols-[minmax(0,1fr)_220px] sm:items-center sm:gap-6 lg:grid-cols-[minmax(0,1fr)_270px] lg:gap-8">
-                    <dl className="min-w-0 space-y-3.5 lg:space-y-4">
-                      <div>
-                        <dt className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/55 lg:text-[10px]">Account name</dt>
-                        <dd className="mt-1 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold leading-5 text-white/90 lg:text-sm">
-                          <span>Kalima Foundation and Charitable Trust</span>
-                          <CopyButton value="Kalima Foundation and Charitable Trust" label="account name" onCopy={copyValue} copied={copiedValue === 'Kalima Foundation and Charitable Trust'} />
-                        </dd>
+                <article
+                  key={account.bank}
+                  data-reveal
+                  className="overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/[0.055] shadow-[0_24px_60px_rgba(0,0,0,0.18)]"
+                >
+                  <div className="grid lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,420px)_minmax(0,1fr)]">
+                    <div className="flex flex-col border-b border-white/10 bg-white p-4 text-forest sm:p-5 lg:border-b-0 lg:border-r">
+                      <div className="flex items-center justify-between gap-3">
+                        <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-forest/65">Scan &amp; pay</p>
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-forest/5 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.14em] text-forest/65">
+                          <QrCode aria-hidden="true" className="size-3.5" />
+                          UPI QR
+                        </span>
                       </div>
-                      {[
-                        ['Account number', account.account],
-                        ['IFSC code', account.ifsc],
-                        ['MICR code', account.micr],
-                        ['Branch', account.branch],
-                        ...(account.upi ? [['UPI ID', account.upi]] : []),
-                      ].map(([label, value]) => (
-                        <div key={label} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-white/10 pt-2.5">
-                          <dt className="text-[10px] text-white/60 lg:text-xs">{label}</dt>
-                          <dd className="inline-flex max-w-full items-center gap-2 text-right text-[11px] font-bold tracking-[0.025em] text-white/90 sm:text-xs lg:text-sm">
-                            <span className="break-all">{value}</span>
-                            <CopyButton value={value} label={label.toLowerCase()} onCopy={copyValue} copied={copiedValue === value} />
-                          </dd>
+
+                      <button
+                        type="button"
+                        onClick={() => setEnlarged(account)}
+                        aria-label={`Enlarge ${account.bank} QR code`}
+                        className="group relative mt-3 block w-full cursor-zoom-in overflow-hidden rounded-xl bg-white ring-1 ring-forest/10 transition-shadow hover:shadow-[0_12px_35px_rgba(7,62,51,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest"
+                      >
+                        <img
+                          src={account.qr}
+                          alt={account.qrAlt}
+                          className="block h-auto w-full object-contain"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <span className="pointer-events-none absolute right-2.5 top-2.5 inline-flex items-center gap-1 rounded-full bg-forest-deep/85 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-white opacity-90 backdrop-blur-sm transition-opacity group-hover:opacity-100">
+                          <Maximize2 aria-hidden="true" className="size-3" />
+                          Enlarge
+                        </span>
+                      </button>
+
+                      <div className="mt-3 flex flex-col items-center gap-1 text-center">
+                        <p className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.12em] text-forest/55">
+                          <Maximize2 aria-hidden="true" className="size-3" />
+                          Tap the code to enlarge
+                        </p>
+                        <p className="text-[11px] leading-5 text-ink/55">Open any UPI app, scan, and confirm the amount.</p>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col justify-center p-5 sm:p-7 lg:p-8">
+                      <div className="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                          <h3 className="font-editorial text-[26px] leading-tight text-white sm:text-[30px] lg:text-[34px]">{account.bank}</h3>
+                          <p className="mt-1 text-[11px] text-white/55">Verified donation account</p>
                         </div>
-                      ))}
-                    </dl>
-
-                    <div className="mx-auto w-full max-w-[230px] rounded-2xl bg-white p-3 text-center sm:mx-0 lg:max-w-[290px] lg:p-4">
-                      <p className="mb-2 text-[9px] font-extrabold uppercase tracking-[0.14em] text-forest/65 lg:text-[10px]">Scan &amp; Pay</p>
-                      <div className="flex aspect-[3/4] w-full items-center justify-center overflow-hidden rounded-xl border-2 border-white bg-white p-1 shadow-[0_0_0_1px_rgba(7,62,51,0.12)]">
-                        <img src={account.qr} alt={account.qrAlt} className="block h-full w-full object-contain" loading="lazy" decoding="async" />
+                        <span className="rounded-full border border-saffron/35 bg-saffron/10 px-3 py-1 text-[9px] font-extrabold uppercase tracking-[0.18em] text-saffron">
+                          Trust account
+                        </span>
                       </div>
+
+                      <dl className="mt-5 grid gap-3 sm:grid-cols-2">
+                        <DetailTile
+                          className="sm:col-span-2"
+                          label="Account name"
+                          value="Kalima Foundation and Charitable Trust"
+                          onCopy={copyValue}
+                          copied={copiedValue === 'Kalima Foundation and Charitable Trust'}
+                        />
+                        <DetailTile
+                          label="Account number"
+                          value={account.account}
+                          onCopy={copyValue}
+                          copied={copiedValue === account.account}
+                        />
+                        <DetailTile label="IFSC code" value={account.ifsc} onCopy={copyValue} copied={copiedValue === account.ifsc} />
+                        <DetailTile label="MICR code" value={account.micr} onCopy={copyValue} copied={copiedValue === account.micr} />
+                        <DetailTile label="Branch" value={account.branch} onCopy={copyValue} copied={copiedValue === account.branch} />
+                        {account.upi ? (
+                          <DetailTile
+                            className="sm:col-span-2"
+                            label="UPI ID"
+                            value={account.upi}
+                            onCopy={copyValue}
+                            copied={copiedValue === account.upi}
+                          />
+                        ) : null}
+                      </dl>
                     </div>
                   </div>
                 </article>
@@ -207,6 +281,46 @@ export function DonationSection() {
             </p>
           </div>
         </div>
+
+        {enlarged ? (
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${enlarged.bank} donation QR code`}
+            onClick={() => setEnlarged(null)}
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-forest-deep/90 p-4 backdrop-blur-md sm:p-6"
+          >
+            <div className="w-full max-w-[520px]" onClick={(event) => event.stopPropagation()}>
+              <div className="mb-3 flex items-center justify-between gap-3 text-white">
+                <div>
+                  <p className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-saffron">Scan &amp; pay</p>
+                  <p className="font-editorial mt-1 text-xl leading-tight sm:text-2xl">{enlarged.bank}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setEnlarged(null)}
+                  aria-label="Close QR preview"
+                  autoFocus
+                  className="inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-saffron"
+                >
+                  <X aria-hidden="true" className="size-5" />
+                </button>
+              </div>
+
+              <div className="overflow-hidden rounded-2xl bg-white p-2 shadow-[0_30px_80px_rgba(0,0,0,0.45)]">
+                <img
+                  src={enlarged.qr}
+                  alt={enlarged.qrAlt}
+                  className="mx-auto block h-auto max-h-[82vh] w-auto max-w-full rounded-xl object-contain"
+                />
+              </div>
+
+              <p className="mt-3 text-center text-[11px] leading-5 text-white/60">
+                Verify the account name before confirming your donation.
+              </p>
+            </div>
+          </div>
+        ) : null}
       </section>
     </>
   )
