@@ -116,7 +116,7 @@ export function SiteHeader() {
         >
           <span className="flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.22)] ring-2 ring-white/60 transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105 sm:size-16 sm:p-2">
             <img
-              src="/kalima-logo.png"
+              src={foundationAssets.logoMark}
               alt="Kalima Foundation emblem"
               className="size-full object-contain"
               width="512"
