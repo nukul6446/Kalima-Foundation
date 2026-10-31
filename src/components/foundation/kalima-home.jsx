@@ -28,7 +28,7 @@ export function KalimaHome() {
         <FocusSection />
         <HealthcareApproachSection />
         <WhoWeServeSection />
-        <MomentsSection />
+        {/* <MomentsSection /> */}
         <MedicalCitySection />
         <DonationSection />
         <VolunteerSection />
