@@ -77,10 +77,10 @@ export function MedicalCitySection() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#052e26]/95 via-[#052e26]/55 to-transparent" aria-hidden="true" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-saffron/10 to-transparent" aria-hidden="true" />
-          <figcaption className="absolute inset-x-0 bottom-0 max-w-[760px] p-6 text-sm leading-6 text-white sm:p-9 sm:text-base sm:leading-7 lg:p-12">
+          <figcaption className="absolute inset-x-0 bottom-5 ml-14 max-w-[760px] p-6 text-sm leading-6 text-white sm:p-9 sm:text-base sm:leading-7 lg:p-12">
             A healthcare-focused ecosystem that combines medical services, specialized treatment, research, education and community healthcare.
           </figcaption>
-          <span className="absolute right-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[9px] font-extrabold uppercase tracking-[0.18em] text-white backdrop-blur-md sm:right-7 sm:top-7">
+          <span className="absolute right-5 top-9 mt-10 mr-17  inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[9px] font-extrabold uppercase tracking-[0.18em] text-white backdrop-blur-md sm:right-7 sm:top-7">
             <Building2 aria-hidden="true" className="size-3.5 text-saffron" />
             A future healthcare hub
           </span>
