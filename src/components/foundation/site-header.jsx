@@ -1,6 +1,7 @@
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { foundationAssets } from './assets'
+import { BrandWordmark } from './premium-ui'
 
 const navigation = [
   { label: 'About', href: '#about', id: 'about' },
@@ -36,7 +37,7 @@ export function SiteHeader() {
       let currentSection = ''
       for (const section of sections) {
         if (section.getBoundingClientRect().top <= 140) {
-          currentSection = section.id
+          currentSection = section.dataset.navSection || section.id
         } else {
           break
         }
@@ -110,7 +111,7 @@ export function SiteHeader() {
       >
         <a
           href="#home"
-          aria-label="Kalima Foundation home"
+          aria-label="Kalima Foundation & Charitable Trust home"
           className="group flex shrink-0 items-center gap-3"
           onClick={closeMenu}
         >
@@ -124,10 +125,12 @@ export function SiteHeader() {
             />
           </span>
           <span className="flex flex-col leading-tight">
-            <span className="font-editorial text-[18px] font-semibold tracking-[0.03em] text-white transition-colors group-hover:text-saffron sm:text-[20px]">
-              KALIMA
-            </span>
-            <span className="mt-1 text-[8px] font-medium leading-tight tracking-[0.16em] text-white/80 sm:text-[9px]">
+            <BrandWordmark
+              variant="light"
+              eager
+              className="h-[18px] w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)] transition-opacity duration-300 group-hover:opacity-85 sm:h-[20px]"
+            />
+            <span className="mt-1 hidden text-[8px] font-medium leading-tight tracking-[0.16em] text-white/80 min-[360px]:block sm:text-[9px]">
               FOUNDATION &amp; CHARITABLE TRUST
             </span>
           </span>
@@ -159,6 +162,8 @@ export function SiteHeader() {
           <a
             href="#donate"
             aria-current={donateActive ? 'true' : undefined}
+            data-magnetic
+            data-magnetic-strength="0.16"
             className={`group relative ml-2 inline-flex min-h-10 items-center gap-2 overflow-hidden rounded-full px-6 text-[13px] font-bold text-forest-deep transition-all duration-300 hover:-translate-y-0.5 ${
               donateActive ? 'bg-[#f6b342] shadow-[0_10px_28px_rgba(239,161,43,0.3)]' : 'bg-saffron hover:bg-[#f6b342]'
             }`}
@@ -183,7 +188,7 @@ export function SiteHeader() {
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
           onClick={() => setMenuOpen((open) => !open)}
-          className="inline-flex size-11 items-center justify-center rounded-full border border-white/35 text-white transition-all duration-300 hover:rotate-6 hover:border-saffron/60 hover:bg-white/10 lg:hidden"
+          className="inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-white/35 text-white transition-all duration-300 hover:rotate-6 hover:border-saffron/60 hover:bg-white/10 lg:hidden"
         >
           {menuOpen ? <X aria-hidden="true" className="size-5" /> : <Menu aria-hidden="true" className="size-5" />}
         </button>

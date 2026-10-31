@@ -111,11 +111,6 @@ export function HeroSection() {
         className="pointer-events-none absolute left-0 top-0 z-[1] size-[36rem] rounded-full bg-[radial-gradient(circle,rgba(239,161,43,0.16),transparent_65%)] opacity-0 blur-2xl"
         aria-hidden="true"
       />
-      <div
-        data-hero-ring
-        className="pointer-events-none absolute -right-20 top-[30%] z-[1] hidden size-[30rem] rounded-full border border-white/10 lg:block"
-        aria-hidden="true"
-      />
       <div className="hero-glow absolute -right-32 top-1/4 size-[28rem] rounded-full bg-saffron/10 blur-3xl" aria-hidden="true" />
 
       <div className="hero-badge absolute right-5 top-1/2 z-10 hidden lg:right-8 lg:block">
@@ -129,6 +124,7 @@ export function HeroSection() {
           <p data-hero-copy className="font-editorial text-base text-saffron sm:text-lg lg:text-xl">
             परोपकारार्थ इदं शरीरम्
           </p>
+          <span data-hero-copy className="mt-4 block h-px w-16 bg-gradient-to-r from-saffron via-saffron/60 to-transparent" aria-hidden="true" />
           <h1 className="font-editorial mt-6 max-w-[920px] text-[clamp(2.35rem,5.6vw,5.35rem)] leading-[1.02] tracking-[-0.045em] text-[#fffaf0] sm:mt-7">
             <span className="block overflow-hidden pb-[0.14em] -mb-[0.14em]">
               <span data-hero-line className="block will-change-transform">
@@ -152,6 +148,8 @@ export function HeroSection() {
           <div data-hero-copy className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <a
               href="#donate"
+              data-magnetic
+              data-magnetic-strength="0.14"
               className="group relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full bg-saffron px-7 text-[13px] font-bold text-forest-deep shadow-[0_12px_35px_rgba(239,161,43,0.22)] transition-all hover:-translate-y-0.5 hover:bg-[#f6b342]"
             >
               <span className="relative z-10 inline-flex items-center gap-2">

@@ -1,6 +1,20 @@
 import { useEffect, useState } from 'react'
-import { Check, Copy, Heart, Maximize2, QrCode, ShieldCheck, X } from 'lucide-react'
+import {
+  ArrowUpRight,
+  BookOpen,
+  Check,
+  Copy,
+  Heart,
+  HeartPulse,
+  Maximize2,
+  QrCode,
+  ShieldCheck,
+  Sparkles,
+  Users,
+  X,
+} from 'lucide-react'
 import { foundationAssets } from './assets'
+import { SpotlightCard } from './premium-ui'
 
 const accounts = [
   {
@@ -27,6 +41,7 @@ const accounts = [
 const donationCategories = [
   {
     title: 'Healthcare Initiatives',
+    icon: HeartPulse,
     items: [
       'Medical treatment assistance.',
       'Medicines and hospital care support.',
@@ -36,6 +51,7 @@ const donationCategories = [
   },
   {
     title: 'Education Programs',
+    icon: BookOpen,
     items: [
       'Books and educational materials.',
       'Scholarships and education assistance.',
@@ -44,6 +60,7 @@ const donationCategories = [
   },
   {
     title: 'Community Development',
+    icon: Users,
     items: [
       'Community welfare initiatives.',
       'Collaboration with NGOs and local institutions.',
@@ -52,6 +69,7 @@ const donationCategories = [
   },
   {
     title: 'Operational & Administrative Support',
+    icon: ShieldCheck,
     items: [
       'Program management.',
       'Essential operational expenses.',
@@ -77,7 +95,7 @@ function CopyButton({ value, label, onCopy, copied }) {
 function DetailTile({ label, value, className = '', onCopy, copied }) {
   return (
     <div className={`rounded-xl border border-white/10 bg-white/[0.055] px-4 py-3.5 ${className}`}>
-      <dt className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/45">{label}</dt>
+      <dt className="text-[9px] font-bold uppercase tracking-[0.15em] text-white/60">{label}</dt>
       <dd className="mt-1.5 flex items-start justify-between gap-2.5">
         <span className="min-w-0 break-all text-[13px] font-semibold leading-5 text-white/95 sm:text-sm">{value}</span>
         <CopyButton value={value} label={label.toLowerCase()} onCopy={onCopy} copied={copied} />
@@ -121,35 +139,54 @@ export function DonationSection() {
 
   return (
     <>
-      <section id="donation-utilisation" className="bg-paper py-20 sm:py-28">
+      <section id="donation-utilisation" className="section-glow bg-paper py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div data-reveal className="max-w-[800px]">
+          <div data-reveal="up" className="max-w-[800px]">
             <p className="eyebrow">Donation utilisation</p>
             <h2 className="font-editorial mt-5 text-[clamp(2.7rem,5vw,4rem)] leading-[1.06] tracking-[-0.045em] text-forest">
               Your Contribution Can Make a Difference
             </h2>
-            <p className="mt-5 max-w-[760px] text-sm leading-7 text-ink/65 sm:text-base sm:leading-8">
+            <p className="mt-5 max-w-[760px] text-sm leading-7 text-ink/75 sm:text-base sm:leading-8">
               Every contribution can support meaningful social initiatives and help improve the lives of people in need. Donations are intended to support the following areas:
             </p>
           </div>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {donationCategories.map(({ title, items }) => (
-              <article key={title} data-reveal className="rounded-[1.5rem] border border-forest/10 bg-white p-5 sm:p-6">
-                <h3 className="font-editorial text-[20px] leading-tight text-forest sm:text-[22px]">{title}</h3>
+            {donationCategories.map(({ title, icon: Icon, items }, index) => (
+              <SpotlightCard
+                key={title}
+                data-reveal="up"
+                className="premium-card group relative flex flex-col overflow-hidden rounded-[1.5rem] border border-forest/10 bg-white p-5 shadow-[0_14px_40px_rgba(23,71,54,0.04)] hover:border-saffron/40 hover:shadow-[0_26px_60px_rgba(23,71,54,0.1)] sm:p-6"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-saffron/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                />
+                <div className="flex items-start justify-between gap-4">
+                  <span className="card-icon flex size-10 items-center justify-center rounded-xl text-forest transition-colors duration-500 group-hover:bg-forest group-hover:text-saffron">
+                    <Icon aria-hidden="true" className="size-[18px]" strokeWidth={1.8} />
+                  </span>
+                  <span className="font-editorial text-xs text-forest/25 transition-colors duration-300 group-hover:text-saffron/80">
+                    0{index + 1}
+                  </span>
+                </div>
+                <h3 className="font-editorial mt-5 text-[20px] leading-tight text-forest sm:text-[22px]">{title}</h3>
                 <ul className="mt-4 flex flex-col gap-3">
                   {items.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-xs leading-5 text-ink/65">
-                      <span className="mt-1.5 size-2 shrink-0 rounded-full bg-mint" aria-hidden="true" />
+                    <li key={item} className="flex items-start gap-2.5 text-[13px] leading-6 text-ink/75">
+                      <span className="mt-2 size-2 shrink-0 rounded-full bg-mint transition-colors duration-300 group-hover:bg-saffron" aria-hidden="true" />
                       {item}
                     </li>
                   ))}
                 </ul>
-              </article>
+                <span className="mt-auto pt-5 text-[9px] font-extrabold uppercase tracking-[0.16em] text-forest/45 transition-colors duration-300 group-hover:text-forest/70">
+                  {index === 3 ? 'Responsible stewardship' : 'Your support at work'}
+                </span>
+              </SpotlightCard>
             ))}
           </div>
 
-          <p data-reveal className="mt-7 flex items-start gap-2.5 text-xs leading-6 text-ink/55">
+          <p data-reveal="up" className="mt-7 flex items-start gap-2.5 text-xs leading-6 text-ink/65">
             <ShieldCheck aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-forest/65" />
             Kalima Foundation &amp; Charitable Trust aims to utilize contributions responsibly and efficiently in support of its charitable objectives.
           </p>
@@ -161,8 +198,14 @@ export function DonationSection() {
           <div className="absolute -bottom-32 -left-24 size-80 rounded-full bg-white/[0.045]" aria-hidden="true" />
           <div className="absolute -right-24 -top-32 size-96 rounded-full border border-white/[0.08]" aria-hidden="true" />
           <div className="relative">
-            <div data-reveal className="max-w-[820px]">
-              <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-saffron sm:text-xs">Support our cause – donate now</p>
+            <div data-reveal="up" className="max-w-[820px]">
+              <div className="flex flex-wrap items-center gap-3">
+                <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-saffron sm:text-xs">Support our cause – donate now</p>
+                <span className="premium-tag">
+                  <Sparkles aria-hidden="true" className="size-3" />
+                  Give with confidence
+                </span>
+              </div>
               <h2
                 aria-label="Be a Part of Someone's Hope."
                 className="donation-title font-editorial mt-5 max-w-[760px] text-[clamp(2.35rem,5vw,4rem)] leading-[1.06] tracking-[-0.04em] text-white"
@@ -179,7 +222,25 @@ export function DonationSection() {
               </p>
             </div>
 
-            <div className="mt-10 flex items-center gap-3" data-reveal>
+            <div className="mt-8 grid gap-3 sm:grid-cols-3" data-reveal="up">
+              {[
+                { icon: ShieldCheck, label: 'Official trust accounts' },
+                { icon: QrCode, label: 'Scan & pay securely' },
+                { icon: Heart, label: 'Every contribution matters' },
+              ].map(({ icon: Icon, label }) => (
+                <div
+                  key={label}
+                  className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/[0.055] px-4 py-3 backdrop-blur-sm transition-colors duration-300 hover:border-saffron/30 hover:bg-white/[0.08]"
+                >
+                  <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-saffron/15 text-saffron">
+                    <Icon aria-hidden="true" className="size-4" strokeWidth={1.8} />
+                  </span>
+                  <span className="text-[11px] font-semibold leading-5 text-white/80">{label}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 flex items-center gap-3" data-reveal="up">
               <Heart aria-hidden="true" className="size-4 text-saffron" />
               <h3 className="text-sm font-semibold text-saffron">Bank Transfer &amp; UPI Donations</h3>
             </div>
@@ -188,8 +249,8 @@ export function DonationSection() {
               {accounts.map((account) => (
                 <article
                   key={account.bank}
-                  data-reveal
-                  className="overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/[0.055] shadow-[0_24px_60px_rgba(0,0,0,0.18)]"
+                  data-reveal="scale"
+                  className="group overflow-hidden rounded-[1.75rem] border border-white/15 bg-white/[0.055] shadow-[0_24px_60px_rgba(0,0,0,0.18)] transition-colors duration-500 hover:border-saffron/30"
                 >
                   <div className="grid lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] xl:grid-cols-[minmax(0,420px)_minmax(0,1fr)]">
                     <div className="flex flex-col border-b border-white/10 bg-white p-4 text-forest sm:p-5 lg:border-b-0 lg:border-r">
@@ -225,7 +286,7 @@ export function DonationSection() {
                           <Maximize2 aria-hidden="true" className="size-3" />
                           Tap the code to enlarge
                         </p>
-                        <p className="text-[11px] leading-5 text-ink/55">Open any UPI app, scan, and confirm the amount.</p>
+                        <p className="text-[11px] leading-5 text-ink/65">Open any UPI app, scan, and confirm the amount.</p>
                       </div>
                     </div>
 
@@ -233,7 +294,7 @@ export function DonationSection() {
                       <div className="flex flex-wrap items-start justify-between gap-3">
                         <div>
                           <h3 className="font-editorial text-[26px] leading-tight text-white sm:text-[30px] lg:text-[34px]">{account.bank}</h3>
-                          <p className="mt-1 text-[11px] text-white/55">Verified donation account</p>
+                          <p className="mt-1 text-[11px] text-white/70">Verified donation account</p>
                         </div>
                         <span className="rounded-full border border-saffron/35 bg-saffron/10 px-3 py-1 text-[9px] font-extrabold uppercase tracking-[0.18em] text-saffron">
                           Trust account
@@ -273,7 +334,7 @@ export function DonationSection() {
               ))}
             </div>
 
-            <p className="mt-6 max-w-[1000px] text-xs leading-6 text-white/65">
+            <p className="mt-6 max-w-[1000px] text-xs leading-6 text-white/80">
               Use the official Bank of Baroda or Axis Bank QR code displayed on this website to make a UPI payment. After making a donation, donors may contact the Trust through its official communication channels for donation confirmation and receipt-related assistance.
             </p>
             <p className="mt-3 min-h-5 text-xs text-white/75" aria-live="polite" role="status">

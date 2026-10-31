@@ -4,7 +4,7 @@ export function CircularBadge({ className = '' }) {
   const pathId = `circular-badge-path-${useId().replaceAll(':', '')}`
 
   return (
-    <div className={`circular-badge ${className}`} aria-label="Our mission, our responsibility, our humanity">
+    <div className={`circular-badge ${className}`} role="img" aria-label="Our mission, our responsibility, our humanity">
       <svg viewBox="0 0 180 180" role="img" aria-hidden="true">
         <defs>
           <path id={pathId} d="M 90,90 m -67,0 a 67,67 0 1,1 134,0 a 67,67 0 1,1 -134,0" />

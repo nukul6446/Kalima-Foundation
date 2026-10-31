@@ -1,4 +1,6 @@
+import { ArrowUpRight, Heart, ShieldCheck } from 'lucide-react'
 import { foundationAssets } from './assets'
+import { BrandWordmark } from './premium-ui'
 
 const footerLinks = [
   { label: 'Home', href: '#home' },
@@ -45,71 +47,165 @@ function SocialIcon({ type }) {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-forest-deep text-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1.2fr_0.9fr_0.7fr_1fr] lg:gap-12">
-        <div>
-          <a href="#home" aria-label="Kalima Foundation home" className="inline-flex items-center gap-3">
-            <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white p-1.5 ring-1 ring-white/25">
-              <img
-                src={foundationAssets.logoMark}
-                alt="Kalima Foundation emblem"
-                className="size-full object-contain"
-                width="512"
-                height="512"
-                loading="lazy"
+    <footer className="relative isolate overflow-hidden bg-forest-deep text-white">
+      <div className="relative border-b border-white/10">
+        {/*
+        <img
+          src={foundationAssets.volunteersAid}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 size-full object-cover object-center opacity-25"
+          loading="lazy"
+          decoding="async"
+        />
+        */}
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-deep via-forest-deep/92 to-forest-deep/55" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[radial-gradient(40rem_20rem_at_85%_20%,rgba(239,161,43,0.16),transparent_70%)]" aria-hidden="true" />
+
+        <div className="relative mx-auto flex max-w-7xl flex-col gap-7 px-5 py-14 sm:px-8 sm:py-16 lg:flex-row lg:items-center lg:justify-between">
+          <div data-reveal="left">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-saffron">A little kindness goes a long way</p>
+            <h2 className="font-editorial mt-3 max-w-[760px] text-[clamp(2.2rem,4.5vw,3.6rem)] leading-[1.04] tracking-[-0.04em] text-white">
+              Your kindness can become <em className="font-normal text-saffron">someone&apos;s tomorrow.</em>
+            </h2>
+          </div>
+          <div className="flex flex-wrap gap-3" data-reveal="right">
+            <a
+              href="#donate"
+              data-magnetic
+              data-magnetic-strength="0.14"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-saffron px-7 text-[13px] font-bold text-forest-deep shadow-[0_14px_35px_rgba(239,161,43,0.24)] transition-colors hover:bg-[#f6b342]"
+            >
+              Donate Now
+              <ArrowUpRight
+                aria-hidden="true"
+                className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
-            </span>
-            <span className="flex flex-col">
-              <span className="font-editorial text-lg font-semibold tracking-[0.03em]">KALIMA</span>
-              <span className="mt-1 text-[8px] font-medium uppercase tracking-[0.14em] text-white/60">Foundation &amp; Charitable Trust (R.)</span>
-            </span>
-          </a>
-          <p className="font-editorial mt-6 text-xl leading-snug text-white/90">Building Hope Through Healthcare.</p>
-          <p className="mt-3 max-w-[360px] text-xs leading-6 text-white/60">
-            Working towards a healthier, educated and empowered society through compassion, service and community development.
-          </p>
+            </a>
+            <a
+              href="#volunteer"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border border-white/30 bg-white/5 px-6 text-[13px] font-semibold text-white backdrop-blur-sm transition-colors hover:border-saffron/60 hover:bg-white/10"
+            >
+              Volunteer
+            </a>
+          </div>
         </div>
+      </div>
+{/* footer bg-Kalima-text */}
+      <div className="relative">
+        <img
+          src={foundationAssets.wordmarkLight}
+          alt=""
+          aria-hidden="true"
+          width="2570"
+          height="482"
+          className="pointer-events-none absolute bottom-0 left-1/2 w-full max-w-[1600px] -translate-x-1/2 opacity-[0.045]"
+          loading="lazy"
+          decoding="async"
+        />
 
-        <div>
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Quick links</p>
-          <nav aria-label="Footer navigation" className="mt-5 flex flex-col items-start gap-3">
-            {footerLinks.map((link) => (
-              <a key={link.href} href={link.href} className="text-xs text-white/70 transition-colors hover:text-white">
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-
-        <div>
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Social media</p>
-          <nav aria-label="Footer social media" className="mt-5 flex flex-col items-start gap-3">
-            {socialLinks.map((link) => (
-              <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 text-xs text-white/70 transition-colors hover:text-saffron">
-                <span className="flex size-7 items-center justify-center rounded-full border border-white/20 transition-colors group-hover:border-saffron" aria-hidden="true">
-                  <SocialIcon type={link.icon} />
+        <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1.25fr_0.7fr_0.62fr_1fr] lg:gap-12">
+          <div data-reveal="left">
+            <a href="#home" aria-label="Kalima Foundation & Charitable Trust home" className="group inline-flex items-center gap-3">
+              <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white p-1.5 ring-1 ring-white/25 transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105">
+                <img
+                  src={foundationAssets.logoMark}
+                  alt="Kalima Foundation emblem"
+                  className="size-full object-contain"
+                  width="512"
+                  height="512"
+                  loading="lazy"
+                />
+              </span>
+              <span className="flex flex-col">
+                <BrandWordmark
+                  variant="gold"
+                  className="h-7 w-auto drop-shadow-[0_4px_18px_rgba(239,161,43,0.25)] sm:h-8"
+                />
+                <span className="mt-1.5 text-[8px] font-medium uppercase tracking-[0.14em] text-white/70">
+                  Foundation &amp; Charitable Trust (R.)
                 </span>
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </div>
+              </span>
+            </a>
+            <p className="font-editorial mt-6 text-xl leading-snug text-white/90">Building Hope Through Healthcare.</p>
+            <p className="mt-3 max-w-[360px] text-xs leading-6 text-white/70">
+              Working towards a healthier, educated and empowered society through compassion, service and community development.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <span className="premium-tag">
+                <ShieldCheck aria-hidden="true" className="size-3" />
+                Registered trust
+              </span>
+              <span className="premium-tag border-mint/25 bg-mint/10 text-mint">
+                <Heart aria-hidden="true" className="size-3" />
+                Since 2023
+              </span>
+            </div>
+          </div>
 
-        <div>
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Our motto</p>
-          <p className="font-editorial mt-5 text-xl leading-snug text-white/90">
-            “From the People, By the People, To the People.”
-          </p>
-          <p className="mt-5 text-[10px] leading-5 text-white/50">
-            All donations and activities are subject to applicable laws, regulations and the Trust&apos;s charitable objectives.
-          </p>
+          <div data-reveal="up">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Explore</p>
+            <nav aria-label="Footer explore navigation" className="mt-5 flex flex-col items-start gap-3">
+              {footerLinks.slice(0, 4).map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="link-underline text-xs text-white/70 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <div data-reveal="up">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Support</p>
+            <nav aria-label="Footer support navigation" className="mt-5 flex flex-col items-start gap-3">
+              {footerLinks.slice(4).map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="link-underline text-xs text-white/70 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          <div data-reveal="right">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Our motto</p>
+            <p className="font-editorial mt-5 text-xl leading-snug text-white/90">
+              “From the People, By the People, To the People.”
+            </p>
+            <nav aria-label="Footer social media" className="mt-6 flex items-center gap-2.5">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={link.label}
+                  className="group flex size-9 items-center justify-center rounded-full border border-white/20 text-white/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-saffron hover:bg-saffron hover:text-forest-deep"
+                >
+                  <SocialIcon type={link.icon} />
+                </a>
+              ))}
+            </nav>
+            <p className="mt-5 text-[10px] leading-5 text-white/65">
+              All donations and activities are subject to applicable laws, regulations and the Trust&apos;s charitable objectives.
+            </p>
+          </div>
         </div>
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-[10px] text-white/50 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-[10px] text-white/65 sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <span>© 2026 Kalima Foundation &amp; Charitable Trust (R.). All Rights Reserved.</span>
-          <span>Building Hope Through Healthcare.</span>
+          <span className="inline-flex items-center gap-1.5">
+            Built with compassion
+            <Heart aria-hidden="true" className="size-3 fill-saffron/80 text-saffron" />
+          </span>
         </div>
       </div>
     </footer>
