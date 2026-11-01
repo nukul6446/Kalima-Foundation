@@ -12,7 +12,8 @@ import {
   Users,
 } from 'lucide-react'
 import { foundationAssets } from './assets'
-import { BrandWordmark, SpotlightCard } from './premium-ui'
+import { BrandLogo } from './brand-logo'
+import { SpotlightCard } from './premium-ui'
 
 const approachAreas = [
   'Humanity and Compassion',
@@ -198,67 +199,26 @@ export function AboutSection() {
             />
 
             {/* TOP BRAND */}
-            <div className="absolute left-5 right-0 top-7 z-20 flex min-w-0 items-center gap-3 px-5 py-5 sm:px-7 sm:py-7">
-              <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-white p-1 shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
-                <img
-                  src={foundationAssets.logoMark}
-                  alt=""
-                  className="size-full object-contain "
-                  width="512"
-                  height="512"
-                  loading="lazy"
-                />
-              </span>
-
-              <span className="flex min-w-0  flex-col leading-tight text-white">
-                <BrandWordmark
-                  variant="light"
-                  className="h-4 w-auto max-w-full sm:h-[18px]"
-                />
-
-                <span className="mt-1   break-words text-[8px] font-medium uppercase tracking-[0.16em] text-white/70">
-                  Foundation &amp; Charitable Trust
-                </span>
-              </span>
+            <div className="absolute inset-x-0 top-0 z-20 flex min-w-0 items-center gap-3 p-5 sm:p-7">
+              {/* Logo size: change width here, or LOGO_WIDTH in brand-logo.jsx */}
+              <BrandLogo width={84} radius={14} alt="" />
             </div>
 
-            {/* BOTTOM TEXT — FIXED */}
-            <figcaption
-              className="
-                absolute
-                bottom-0
-                left-0
-                right-0
-                z-20
-                box-border
-                w-full
-                min-w-0
-                max-w-full
-                px-5
-                pb-6
-                pt-16
-                sm:px-8
-                sm:pb-8
-                sm:pt-20
-              "
-              style={{
-                paddingLeft: 'clamp(20px, 5vw, 32px)',
-                paddingRight: 'clamp(20px, 5vw, 32px)',
-              }}
-            >
+            {/* BOTTOM TEXT */}
+            <figcaption className="absolute inset-x-0 bottom-0 z-20 p-5 sm:p-7">
               <div className="w-full min-w-0 max-w-[520px]">
-                <p className="m-2 ml-3 break-words text-[9px] font-extrabold uppercase tracking-[0.18em] text-saffron sm:text-[10px]">
+                <p className="text-[9px] font-extrabold uppercase tracking-[0.18em] text-saffron sm:text-[10px]">
                   Our promise
                 </p>
 
-                <blockquote className="font-editorial m-2 mt-0 w-full max-w-full break-words text-[clamp(1.35rem,5vw,1.9rem)] italic leading-[1.12] text-white">
-                  "From the People, By the People,
+                <blockquote className="font-editorial mt-2 w-full max-w-full break-words text-[clamp(1.35rem,5vw,1.9rem)] italic leading-[1.12] text-white">
+                  &ldquo;From the People, By the People,
                   <br className="hidden sm:block" />
                   <span className="sm:hidden"> </span>
-                  To the People."
+                  To the People.&rdquo;
                 </blockquote>
 
-                <p className="m-3 mt-0  mb-7 max-w-full break-words text-[10px] leading-5 text-white/65 sm:text-[11px]">
+                <p className="mt-3 max-w-full break-words text-[10px] leading-5 text-white/65 sm:text-[11px]">
                   Serving communities with compassion since 18 July 2023.
                 </p>
               </div>
@@ -399,7 +359,7 @@ export function VisionMissionSection() {
             </p>
 
             <span className="premium-tag">
-              <Sparkles aria-hidden="true" className="size-3" />
+           
               Our shared purpose
             </span>
           </div>
@@ -463,8 +423,8 @@ export function FocusSection() {
             aria-hidden="true"
           />
 
-          <figcaption className="absolute inset-x-0 bottom-3 ml-15 m-2 z-10 max-w-[560px] p-6 sm:p-9 lg:p-10">
-            <p className="text-[10px]  font-extrabold uppercase tracking-[0.18em] text-saffron">
+          <figcaption className="absolute inset-x-0 bottom-0 z-10 max-w-[560px] p-6 sm:p-9 lg:p-10">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">
               Care that reaches people
             </p>
 
@@ -473,7 +433,7 @@ export function FocusSection() {
             </p>
           </figcaption>
 
-          <span className="absolute right-15 top-12 mr-8 z-10 hidden items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[9px] font-extrabold uppercase tracking-[0.18em] text-white backdrop-blur-md sm:inline-flex">
+          <span className="absolute right-6 top-6 z-10 hidden items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-[9px] font-extrabold uppercase tracking-[0.18em] text-white backdrop-blur-md sm:inline-flex">
             <HeartPulse
               aria-hidden="true"
               className="size-3.5 text-saffron"
@@ -665,15 +625,11 @@ export function WhoWeServeSection() {
               aria-hidden="true"
             />
 
-            <figcaption className="absolute inset-x-0 bottom-9 ml-4 m-2 text-emerald-100  z-10 box-border p-5 sm:p-6">
+            <figcaption className="absolute inset-x-0 bottom-0 z-10 box-border p-5 text-emerald-100 sm:p-6">
               Education opens the door to a better future.
             </figcaption>
 
-            <span className="absolute right-9 top-14 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-[8px] font-extrabold uppercase tracking-[0.16em] text-white backdrop-blur-md">
-              <Sparkles
-                aria-hidden="true"
-                className="size-3 shrink-0 text-saffron"
-              />
+            <span className="absolute right-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/10 px-3 py-1.5 text-[8px] font-extrabold uppercase tracking-[0.16em] text-white backdrop-blur-md">
               Hope in motion
             </span>
           </figure>

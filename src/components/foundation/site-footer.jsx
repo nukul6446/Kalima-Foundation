@@ -1,6 +1,6 @@
 import { ArrowUpRight, Heart, ShieldCheck } from 'lucide-react'
 import { foundationAssets } from './assets'
-import { BrandWordmark } from './premium-ui'
+import { BrandLogo } from './brand-logo'
 
 const footerLinks = [
   { label: 'Home', href: '#home' },
@@ -106,26 +106,9 @@ export function SiteFooter() {
 
         <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-[1.25fr_0.7fr_0.62fr_1fr] lg:gap-12">
           <div data-reveal="left">
-            <a href="#home" aria-label="Kalima Foundation & Charitable Trust home" className="group inline-flex items-center gap-3">
-              <span className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-white p-1.5 ring-1 ring-white/25 transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105">
-                <img
-                  src={foundationAssets.logoMark}
-                  alt="Kalima Foundation emblem"
-                  className="size-full object-contain"
-                  width="512"
-                  height="512"
-                  loading="lazy"
-                />
-              </span>
-              <span className="flex flex-col">
-                <BrandWordmark
-                  variant="gold"
-                  className="h-7 w-auto drop-shadow-[0_4px_18px_rgba(239,161,43,0.25)] sm:h-8"
-                />
-                <span className="mt-1.5 text-[8px] font-medium uppercase tracking-[0.14em] text-white/70">
-                  Foundation &amp; Charitable Trust (R.)
-                </span>
-              </span>
+            <a href="#home" aria-label="Kalima Foundation & Charitable Trust home" className="group inline-flex items-center">
+              {/* Logo size: change width here, or LOGO_WIDTH in brand-logo.jsx */}
+              <BrandLogo width={92} radius={16} alt="Kalima Foundation & Charitable Trust emblem" />
             </a>
             <p className="font-editorial mt-6 text-xl leading-snug text-white/90">Building Hope Through Healthcare.</p>
             <p className="mt-3 max-w-[360px] text-xs leading-6 text-white/70">

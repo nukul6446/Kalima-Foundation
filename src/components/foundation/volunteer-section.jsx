@@ -46,7 +46,7 @@ export function VolunteerSection() {
             </a>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <span className="inline-flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-forest/45">
-                <Sparkles aria-hidden="true" className="size-3.5 text-saffron" />
+                {/* <Sparkles aria-hidden="true" className="size-3.5 text-saffron" /> */}
                 Give your time
               </span>
               <span className="inline-flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.18em] text-forest/45">
@@ -94,11 +94,11 @@ export function VolunteerSection() {
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#052e26]/95 via-[#052e26]/55 to-transparent" aria-hidden="true" />
             <figcaption className="absolute inset-y-0 left-0 flex max-w-[520px] flex-col justify-center p-6 text-white sm:p-9 lg:p-12">
-              <p className="text-[10px] font-extrabold uppercase  ml-14 tracking-[0.18em] text-saffron">Volunteers in action</p>
-              <p className="font-editorial mt-2 ml-13 text-[clamp(1.5rem,2.8vw,2.2rem)] leading-tight">
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-saffron">Volunteers in action</p>
+              <p className="font-editorial mt-2 text-[clamp(1.5rem,2.8vw,2.2rem)] leading-tight">
                 Every hour given becomes hope for a family.
               </p>
-              <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[9px] ml-13 font-extrabold uppercase tracking-[0.16em] text-white backdrop-blur-md">
+              <span className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-[9px] font-extrabold uppercase tracking-[0.16em] text-white backdrop-blur-md">
                 <HeartHandshake aria-hidden="true" className="size-3.5 text-saffron" />
                 Join the movement
               </span>

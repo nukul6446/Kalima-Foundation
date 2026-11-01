@@ -1,4 +1,5 @@
 import logo from '../../assets/images/kalima-logo.png'
+import logoMark from '../../assets/images/kalima-logo-mark.png'
 import wordmark from '../../assets/images/kalima-wordmark.png'
 import wordmarkLight from '../../assets/images/kalima-wordmark-light.png'
 import wordmarkGold from '../../assets/images/kalima-wordmark-gold.png'
@@ -13,7 +14,7 @@ import barodaQr from '../../assets/images/baroda-qr.jpeg'
 
 export const foundationAssets = {
   logo,
-  logoMark: logo,
+  logoMark,
   wordmark,
   wordmarkLight,
   wordmarkGold,

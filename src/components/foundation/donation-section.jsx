@@ -202,7 +202,7 @@ export function DonationSection() {
               <div className="flex flex-wrap items-center gap-3">
                 <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-saffron sm:text-xs">Support our cause – donate now</p>
                 <span className="premium-tag">
-                  <Sparkles aria-hidden="true" className="size-3" />
+               
                   Give with confidence
                 </span>
               </div>

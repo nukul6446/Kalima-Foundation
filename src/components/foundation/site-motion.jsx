@@ -164,20 +164,25 @@ export function SiteMotion() {
       gsap.utils.toArray('[data-image-reveal]').forEach((frame) => {
         const image = frame.querySelector('img')
 
-        gsap.fromTo(
-          frame,
-          { clipPath: 'inset(10% 7% 10% 7% round 1.75rem)' },
-          {
-            clipPath: 'inset(0% 0% 0% 0% round 1.75rem)',
-            duration: 1.25,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: frame,
-              start: 'top 88%',
-              once: true,
+        // Reveal the image only — clipping the whole frame used to cut off
+        // the captions that sit at the bottom of the card.
+        if (image) {
+          gsap.fromTo(
+            image,
+            { clipPath: 'inset(9% 6% 9% 6%)' },
+            {
+              clipPath: 'inset(0% 0% 0% 0%)',
+              duration: 1.25,
+              ease: 'power3.out',
+              clearProps: 'clipPath',
+              scrollTrigger: {
+                trigger: frame,
+                start: 'top 88%',
+                once: true,
+              },
             },
-          },
-        )
+          )
+        }
 
         if (image) {
           gsap.fromTo(

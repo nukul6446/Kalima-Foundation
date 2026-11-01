@@ -1,7 +1,6 @@
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-import { foundationAssets } from './assets'
-import { BrandWordmark } from './premium-ui'
+import { BrandLogo } from './brand-logo'
 
 const navigation = [
   { label: 'About', href: '#about', id: 'about' },
@@ -112,28 +111,11 @@ export function SiteHeader() {
         <a
           href="#home"
           aria-label="Kalima Foundation & Charitable Trust home"
-          className="group flex shrink-0 items-center gap-3"
+          className="group flex shrink-0 items-center"
           onClick={closeMenu}
         >
-          <span className="flex size-14 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.22)] ring-2 ring-white/60 transition-transform duration-500 group-hover:-rotate-3 group-hover:scale-105 sm:size-16 sm:p-2">
-            <img
-              src={foundationAssets.logoMark}
-              alt="Kalima Foundation emblem"
-              className="size-full object-contain"
-              width="512"
-              height="512"
-            />
-          </span>
-          <span className="flex flex-col leading-tight">
-            <BrandWordmark
-              variant="light"
-              eager
-              className="h-[18px] w-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)] transition-opacity duration-300 group-hover:opacity-85 sm:h-[20px]"
-            />
-            <span className="mt-1 hidden text-[8px] font-medium leading-tight tracking-[0.16em] text-white/80 min-[360px]:block sm:text-[9px]">
-              FOUNDATION &amp; CHARITABLE TRUST
-            </span>
-          </span>
+          {/* Logo size: change width here, or LOGO_WIDTH in brand-logo.jsx */}
+          <BrandLogo width={68} radius={13} loading="eager" />
         </a>
 
         <nav aria-label="Main navigation" className="hidden items-center gap-1 lg:flex xl:gap-2">
