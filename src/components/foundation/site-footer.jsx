@@ -17,6 +17,7 @@ const socialLinks = [
   { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=100069531152861', icon: 'facebook' },
   { label: 'Instagram', href: 'https://www.instagram.com/kalima_fct', icon: 'instagram' },
   { label: 'Telegram', href: 'https://t.me/kalimafct', icon: 'telegram' },
+  { label: 'YouTube', href: 'https://www.youtube.com/@kalima-fct', icon: 'youtube' },
 ]
 
 function SocialIcon({ type }) {
@@ -38,11 +39,22 @@ function SocialIcon({ type }) {
     )
   }
 
+  if (type === 'telegram')
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4 fill-current">
       <path d="m21.6 4.25-3.1 15.07c-.23 1.06-.87 1.32-1.76.82l-4.85-3.58-2.34 2.25c-.26.26-.48.48-.98.48l.35-4.94 8.99-8.12c.39-.35-.09-.55-.61-.2L6.18 12.98l-4.77-1.5c-1.04-.33-1.06-1.04.22-1.54L20.3 3.2c.88-.33 1.65.2 1.3 1.05Z" />
     </svg>
   )
+
+  if (type === 'youtube') {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" className="size-4 fill-current">
+        <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.55 3.6 12 3.6 12 3.6s-7.55 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.05 0 12 0 12s0 3.95.5 5.8a3 3 0 0 0 2.1 2.1c1.85.5 9.4.5 9.4.5s7.55 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.95 24 12 24 12s0-3.95-.5-5.8ZM9.6 15.6V8.4l6.3 3.6-6.3 3.6Z" />
+      </svg>
+    )
+  }
+
+  return null
 }
 
 export function SiteFooter() {
