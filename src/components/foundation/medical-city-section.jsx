@@ -49,7 +49,7 @@ export function MedicalCitySection() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div data-reveal="up" className="max-w-[850px]">
           <div className="flex flex-wrap items-center gap-3">
-            <p className="eyebrow">Global Medical City Project – Murudeshwar</p>
+            <p className="eyebrow">Global Medical City Project  </p>
             <span className="premium-tag border-forest/20 bg-forest/[0.04] text-forest/60">
          
               Flagship initiative
@@ -59,7 +59,7 @@ export function MedicalCitySection() {
             Building a Future of <em className="font-normal text-saffron">Accessible</em> Healthcare
           </h2>
           <p className="mt-6 max-w-[780px] text-sm leading-7 text-ink/70 sm:text-base sm:leading-8">
-            One of the major proposed initiatives of Kalima Foundation &amp; Charitable Trust is the Global Medical City Project (GMCP) at Murudeshwar, Uttara Kannada District, Karnataka.
+            One of the major proposed initiatives of Kalima Foundation &amp; Charitable Trust is the Global Medical City Project (GMCP) , Uttara Kannada District, Karnataka.
           </p>
         </div>
 
@@ -140,7 +140,7 @@ export function MedicalCitySection() {
               ))}
             </div>
             <p className="mt-6 max-w-[600px] text-sm leading-7 text-ink/70">
-              Murudeshwar offers a strategic location with road and railway connectivity, tourism potential and opportunities for healthcare development. The region&apos;s natural beauty, tourism and connectivity provide opportunities for a future healthcare development hub.
+           offers a strategic location with road and railway connectivity, tourism potential and opportunities for healthcare development. The region&apos;s natural beauty, tourism and connectivity provide opportunities for a future healthcare development hub.
             </p>
           </div>
 

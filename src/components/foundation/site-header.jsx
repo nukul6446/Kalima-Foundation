@@ -6,7 +6,7 @@ const navigation = [
   { label: 'About', href: '#about', id: 'about' },
   { label: 'Mission', href: '#mission', id: 'mission' },
   { label: 'Initiatives', href: '#work', id: 'work' },
-  { label: 'Medical City', href: '#medical-city', id: 'medical-city' },
+  // { label: 'Medical City', href: '#medical-city', id: 'medical-city' },
   { label: 'Volunteer', href: '#volunteer', id: 'volunteer' },
   { label: 'Contact', href: '#connect', id: 'connect' },
 ]
